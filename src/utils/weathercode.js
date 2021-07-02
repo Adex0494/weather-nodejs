@@ -11,11 +11,14 @@ const forecast = (longitude, latitude, callback) => {
     } else if (!body.main) {
       callback("Forecast could not be measured for the specified coordinates");
     } else {
+      console.log(body);
       callback(
         undefined,
-        `It is currently ${body.main.temp - 273.15} degrees out. Humidity is ${
-          body.main.humidity
-        }%`
+        `It is currently ${
+          body.main.temp - 273.15
+        } degrees out, but it feels like ${
+          body.main.feels_like - 273.15
+        }. Humidity is ${body.main.humidity}%`
       );
     }
   });
